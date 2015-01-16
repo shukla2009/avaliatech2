@@ -70,8 +70,8 @@ jQuery(function($) {'use strict',
 		    success: function(data, textStatus, jqXHR)
 		    {
 		        console.log(data);
-		        var obj = JSON.parse(data);
-				form_status.html('<p class="text-success">' + obj.message + '</p>').delay(3000).fadeOut();
+		        //var obj = JSON.parse(data);
+				form_status.html('<p class="text-success">' + data.message + '</p>').delay(3000).fadeOut();
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
