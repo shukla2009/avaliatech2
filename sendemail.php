@@ -1,5 +1,5 @@
 <?php
-	header('Content-type: application/json');
+	//header('Content-type: application/json');
     $status = array(
 		'type'=>'success',
 		'message'=>'Thank you for contact us. As early as possible  we will contact you '
