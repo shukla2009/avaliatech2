@@ -14,7 +14,7 @@
 
     $body = 'Name: ' . $name . "\n\n" . 'Email: ' . $email . "\n\n" . 'Subject: ' . $subject . "\n\n" . 'Message: ' . $message;
 
-    $success = @mail($email_to, $subject, $body, 'From: <'.$email_from.'>');
-
+    $success = mail($email_to, $subject, $body, 'From: <'.$email_from.'>');
+print_r($_POST);
     echo json_encode($status);
     die;
