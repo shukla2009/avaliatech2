@@ -43,14 +43,40 @@ jQuery(function($) {'use strict',
 	form.submit(function(event){
 		event.preventDefault();
 		var form_status = $('<div class="form_status"></div>');
-		$.ajax({
-			url: $(this).attr('action'),
+		var formData = $(this).serialize();
 
+        console.log(formData);
+    
+
+		$.ajax({
+			/*url: $(this).attr('action'),
+			
 			beforeSend: function(){
 				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn() );
 			}
 		}).done(function(data){
-			form_status.html('<p class="text-success">' + data.message + '</p>').delay(3000).fadeOut();
+			console.log(data);
+			var obj = JSON.parse(data);
+			form_status.html('<p class="text-success">' + obj.message + '</p>').delay(3000).fadeOut();
+		});*/
+
+			beforeSend: function(){
+				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn() );
+			},
+			url: $(this).attr('action'),
+			
+		    type: "POST",
+		    data : formData,
+		    success: function(data, textStatus, jqXHR)
+		    {
+		        console.log(data);
+		        //var obj = JSON.parse(data);
+				form_status.html('<p class="text-success">' + data.message + '</p>').delay(3000).fadeOut();
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		 
+		    }
 		});
 	});
 
